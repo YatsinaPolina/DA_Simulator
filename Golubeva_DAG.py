@@ -9,19 +9,6 @@ from airflow.decorators import dag, task
 from airflow.operators.python import get_current_context
 
 
-#Коннекшн для выгрузки
-connection = {
-    'host': 'https://clickhouse.lab.karpov.courses',
-    'password': 'dpo_python_2020',
-    'user': 'student',
-    'database': 'simulator_20221020'
-}
-
-#Конекшн для загрузки
-connection_load = {'host': 'https://clickhouse.lab.karpov.courses',
-              'database': 'test',
-              'user':'student-rw',
-              'password':'656e2b0c9c'}
 
 # Дефолтные параметры, которые прокидываются в таски
 default_args = {
