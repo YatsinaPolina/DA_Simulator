@@ -14,13 +14,7 @@ import os
 from airflow.decorators import dag, task
 from airflow.operators.python import get_current_context
 
-#Коннекшн для выгрузки
-connection = {
-    'host': 'https://clickhouse.lab.karpov.courses',
-    'password': 'dpo_python_2020',
-    'user': 'student',
-    'database': 'simulator_20221020'
-}
+
 # Дефолтные параметры, которые прокидываются в таски
 default_args = {
     'owner': 'p-golubeva-12',
@@ -103,8 +97,6 @@ def anomaly_alert_golubeva():
     
     @task()
     def run_alerts(data, chat=None):
-        chat_id = chat or -715927362 #19449684
-        my_token='5779793401:AAHJCsf63siz7R0_e6D-aGL0CHnmTlsZxyQ'
         bot = telegram.Bot(token=my_token)
         metrics_list = ['users_feed','views', 'likes', 'CTR','users_mess','sent_mess']
         for metric in metrics_list:
