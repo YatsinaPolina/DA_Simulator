@@ -12,13 +12,7 @@ import io
 from airflow.decorators import dag, task
 from airflow.operators.python import get_current_context
 
-#Коннекшн для выгрузки
-connection = {
-    'host': 'https://clickhouse.lab.karpov.courses',
-    'password': 'dpo_python_2020',
-    'user': 'student',
-    'database': 'simulator_20221020'
-}
+
 # Дефолтные параметры, которые прокидываются в таски
 default_args = {
     'owner': 'p-golubeva-12',
@@ -108,8 +102,6 @@ def dag_golubeva():
 
     @task
     def load(msg, plot, chat = None):
-        chat_id = chat or -817148946
-        my_token='5779793401:AAHJCsf63siz7R0_e6D-aGL0CHnmTlsZxyQ'
         bot = telegram.Bot(token=my_token)
         bot.sendMessage(chat_id=chat_id, text = msg)
         bot.sendPhoto(chat_id=chat_id, photo = plot)
