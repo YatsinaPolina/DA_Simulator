@@ -83,7 +83,7 @@ def dag_golubeva_etl():
     
     @task
     def transform_merge(df_cube1, df_cube2):
-        df_merged = pd.merge(df_cube1, df_cube2, how="inner", on=["user_id"])
+        df_merged = pd.merge(df_cube1, df_cube2, how="outer", on=["user_id"]).dropna()
         return df_merged
     
     @task
